@@ -1,31 +1,51 @@
-import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+import { StyleSheet, Pre, Pressable } from "react-native";
+import { Link } from "expo-router";
+import EditScreenInfo from "@/components/EditScreenInfo";
+import { Text, View } from "@/components/Themed";
 
 export default function TabTwoScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/two.tsx" />
+      <Text style={styles.sectionTitle}>News Headlines</Text>
+      <Pressable style={styles.link} >
+      <Link href="api/News"> <Text style={styles.linkText}>News</Text></Link>
+      </Pressable>
+      <Text style={styles.sectionTitle}>URL Shortener</Text>
+      <Pressable style={styles.link} >
+        <Text style={styles.linkText}><Link href="api/UrlShortner">Go to Url Shortener</Link></Text>
+      </Pressable>
+      <Pressable style={styles.link} >
+        <Text style={styles.linkText}><Link href="api/JobSearch">Job Search</Link></Text>
+      </Pressable>
     </View>
   );
 }
 
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 20,
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 10,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  link: {
+    padding: 10,
+    marginVertical: 5,
+    backgroundColor: "#2196F3",
+    borderRadius: 5,
+    width: 200, // Adjust width as needed
+    alignItems: "center",
+  },
+  linkText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });
